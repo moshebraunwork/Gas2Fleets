@@ -194,19 +194,19 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
 
-    /* Hero: stack content then image then stats */
+    /* Hero: full background image, no strip */
     #home {
       min-height: auto;
-      background: var(--dark2);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%),
+        url('gas2fleets.png') center/cover no-repeat;
       flex-direction: column;
       align-items: stretch;
       padding: 0;
     }
     .hero-content {
-      padding: 90px 6% 2rem;
+      padding: 90px 6% 2.5rem;
       max-width: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)),
-        url('gas2fleets.png') center/cover no-repeat;
+      background: none;
     }
     .hero-badge {
       white-space: normal;
@@ -300,18 +300,13 @@
       <a href="#how-it-works" class="btn-outline">How It Works</a>
     </div>
   </div>
-  <div class="hero-img-strip"></div>
   <div class="hero-stats">
     <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Fleet Ready</span></div>
     <div class="stat"><span class="stat-num">0</span><span class="stat-label">Gas Station Stops</span></div>
     <div class="stat"><span class="stat-num">2</span><span class="stat-label">Counties Served</span></div>
   </div>
 </section>
-<!-- Mobile-only image strip (shown via CSS only on mobile) -->
-<style>
-  .hero-img-strip { display: none; }
-  @media (max-width: 768px) { .hero-img-strip { display: block; } }
-</style>
+
 
 <div class="stripe"></div>
 
