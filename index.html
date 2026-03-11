@@ -131,6 +131,8 @@
   .benefit-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.88)); padding: 1.8rem 2rem; z-index: 2; }
   .benefit-img-caption { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; line-height: 1.2; transition: opacity 0.3s; }
   .benefit-img-caption span { color: var(--orange); }
+  /* Inline accordion image (mobile only — hidden on desktop) */
+  .benefit-inline-panel { display: none; }
 
   /* ── INDUSTRIES ── */
   #industries { background: var(--dark3); }
@@ -264,16 +266,36 @@
     .step:nth-child(3) { border-right: 1px solid var(--mid); border-top: 1px solid var(--mid); }
     .step:nth-child(4) { border-right: none; border-top: 1px solid var(--mid); }
     .step:nth-child(5) { grid-column: span 2; border-right: none; border-top: 1px solid var(--mid); }
-    .benefits-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-    .benefit-img-panel { position: static; order: -1; }
-    .benefit-img { min-height: 280px; }
-    .benefit-img::before { display: none; }
+    .benefits-layout { grid-template-columns: 1fr; gap: 0; }
+    .benefit-img-panel { display: none; }
     .benefit-item { gap: 1rem; padding: 1.2rem 1rem; }
     .benefit-item.active { padding-left: calc(1rem - 3px); }
     .benefit-icon { width: 40px; height: 40px; min-width: 40px; }
     .benefit-icon svg { width: 20px; height: 20px; }
-    .benefit-img-overlay { padding: 1.2rem 1.5rem; }
-    .benefit-img-caption { font-size: 1.1rem; }
+    /* Inline accordion */
+    .benefit-inline-panel {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .benefit-inline-panel.open { max-height: 260px; }
+    .benefit-inline-img {
+      width: 100%; height: 220px;
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .benefit-inline-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 1rem 1.2rem;
+    }
+    .benefit-inline-caption {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      text-transform: uppercase; line-height: 1.2; color: #fff;
+    }
+    .benefit-inline-caption span { color: var(--orange); }
     .industries-grid { grid-template-columns: repeat(2, 1fr); }
     .area-grid { grid-template-columns: 1fr; gap: 2rem; }
     .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -395,21 +417,46 @@
           <div class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="benefit-text"><h4>Save Time</h4><p>Eliminate every gas station stop. Drivers go straight from base to job — zero detours.</p></div>
         </div>
+        <div class="benefit-inline-panel open">
+          <div class="benefit-inline-img" style="background-image:url('gas2fleet1.png')">
+            <div class="benefit-inline-overlay"><div class="benefit-inline-caption">Full tanks.<br><span>Every morning.</span></div></div>
+          </div>
+        </div>
         <div class="benefit-item" data-index="1">
           <div class="benefit-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
           <div class="benefit-text"><h4>Increase Productivity</h4><p>More time on the road means more jobs completed and more revenue every day.</p></div>
+        </div>
+        <div class="benefit-inline-panel">
+          <div class="benefit-inline-img" style="background-image:url('gas2fleet2.png')">
+            <div class="benefit-inline-overlay"><div class="benefit-inline-caption">More jobs.<br><span>Every day.</span></div></div>
+          </div>
         </div>
         <div class="benefit-item" data-index="2">
           <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
           <div class="benefit-text"><h4>Overnight Convenience</h4><p>Fueling happens while your fleet sleeps. Zero disruption to daily operations.</p></div>
         </div>
+        <div class="benefit-inline-panel">
+          <div class="benefit-inline-img" style="background-image:url('gas2fleet3.png')">
+            <div class="benefit-inline-overlay"><div class="benefit-inline-caption">Fueled overnight.<br><span>Zero disruption.</span></div></div>
+          </div>
+        </div>
         <div class="benefit-item" data-index="3">
           <div class="benefit-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
           <div class="benefit-text"><h4>Better Fleet Control</h4><p>Fleet managers always know every vehicle is topped off and ready to go.</p></div>
         </div>
+        <div class="benefit-inline-panel">
+          <div class="benefit-inline-img" style="background-image:url('gas2fleet4.png')">
+            <div class="benefit-inline-overlay"><div class="benefit-inline-caption">Every vehicle.<br><span>Always ready.</span></div></div>
+          </div>
+        </div>
         <div class="benefit-item" data-index="4">
           <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="benefit-text"><h4>Reliable & Professional</h4><p>Consistent scheduled service you can count on — day after day, week after week.</p></div>
+        </div>
+        <div class="benefit-inline-panel">
+          <div class="benefit-inline-img" style="background-image:url('gas2fleet5.png')">
+            <div class="benefit-inline-overlay"><div class="benefit-inline-caption">Scheduled service.<br><span>You can count on.</span></div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -669,7 +716,8 @@
       document.querySelectorAll('.benefit-slide')[idx].classList.add('active');
       document.getElementById('benefitCaption').innerHTML = benefitCaptions[idx];
       if (window.innerWidth <= 768) {
-        document.querySelector('.benefit-img').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.querySelectorAll('.benefit-inline-panel').forEach(p => p.classList.remove('open'));
+        item.nextElementSibling.classList.add('open');
       }
     });
   });
