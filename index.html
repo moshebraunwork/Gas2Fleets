@@ -668,6 +668,9 @@
       item.classList.add('active');
       document.querySelectorAll('.benefit-slide')[idx].classList.add('active');
       document.getElementById('benefitCaption').innerHTML = benefitCaptions[idx];
+      if (window.innerWidth <= 768) {
+        document.querySelector('.benefit-img').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   });
 
