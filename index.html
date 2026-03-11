@@ -88,10 +88,10 @@
   /* ── HOW IT WORKS ── */
   #how-it-works { background: var(--dark2); }
   .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 3rem; border: 1px solid var(--mid); }
-  .step { padding: 2.5rem 1.8rem; border-right: 1px solid var(--mid); position: relative; transition: background 0.3s; }
+  .step { padding: 2.5rem 1.8rem; border-right: 1px solid var(--mid); position: relative; transition: background 0.3s; cursor: pointer; }
   .step:last-child { border-right: none; }
-  .step:hover { background: var(--mid); }
-  .step:hover .step-svg { stroke: var(--orange); }
+  .step:hover, .step:active { background: var(--mid); }
+  .step:hover .step-svg, .step:active .step-svg { stroke: var(--orange); }
   .step-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 4rem; line-height: 1; color: var(--orange); opacity: 0.18; position: absolute; top: 1rem; right: 1.2rem; }
   .step-svg { width: 34px; height: 34px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1rem; display: block; transition: stroke 0.3s; }
   .step h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
@@ -137,10 +137,10 @@
   /* ── INDUSTRIES ── */
   #industries { background: var(--dark3); }
   .industries-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--mid); margin-top: 3rem; border: 1px solid var(--mid); width: 100%; }
-  .industry-card { background: var(--dark3); padding: 2.2rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; text-align: center; transition: all 0.25s; cursor: default; }
-  .industry-card:hover { background: var(--orange); }
-  .industry-card:hover svg { stroke: var(--dark); }
-  .industry-card:hover .industry-name { color: var(--dark); }
+  .industry-card { background: var(--dark3); padding: 2.2rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; text-align: center; transition: all 0.25s; cursor: pointer; }
+  .industry-card:hover, .industry-card:active { background: var(--orange); }
+  .industry-card:hover svg, .industry-card:active svg { stroke: var(--dark); }
+  .industry-card:hover .industry-name, .industry-card:active .industry-name { color: var(--dark); }
   .industry-card svg { width: 30px; height: 30px; stroke: var(--orange); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.25s; }
   .industry-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.25s; line-height: 1.3; }
 
@@ -665,6 +665,9 @@
 </footer>
 
 <script>
+  // Enable :active states on iOS WebKit (Safari, Google app)
+  document.addEventListener('touchstart', function(){}, {passive: true});
+
   // Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
