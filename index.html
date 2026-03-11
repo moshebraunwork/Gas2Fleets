@@ -264,10 +264,16 @@
     .step:nth-child(3) { border-right: 1px solid var(--mid); border-top: 1px solid var(--mid); }
     .step:nth-child(4) { border-right: none; border-top: 1px solid var(--mid); }
     .step:nth-child(5) { grid-column: span 2; border-right: none; border-top: 1px solid var(--mid); }
-    .benefits-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .benefits-layout { grid-template-columns: 1fr; gap: 1.5rem; }
     .benefit-img-panel { position: static; order: -1; }
-    .benefit-img { min-height: 240px; }
+    .benefit-img { min-height: 280px; }
     .benefit-img::before { display: none; }
+    .benefit-item { gap: 1rem; padding: 1.2rem 1rem; }
+    .benefit-item.active { padding-left: calc(1rem - 3px); }
+    .benefit-icon { width: 40px; height: 40px; min-width: 40px; }
+    .benefit-icon svg { width: 20px; height: 20px; }
+    .benefit-img-overlay { padding: 1.2rem 1.5rem; }
+    .benefit-img-caption { font-size: 1.1rem; }
     .industries-grid { grid-template-columns: repeat(2, 1fr); }
     .area-grid { grid-template-columns: 1fr; gap: 2rem; }
     .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -281,6 +287,12 @@
     .step { border-right: none !important; border-top: 1px solid var(--mid) !important; }
     .step:first-child { border-top: none !important; }
     .step:nth-child(5) { grid-column: span 1; }
+    .benefit-item { gap: 0.75rem; padding: 0.9rem 0.75rem; }
+    .benefit-item.active { padding-left: calc(0.75rem - 3px); }
+    .benefit-icon { width: 36px; height: 36px; min-width: 36px; }
+    .benefit-icon svg { width: 17px; height: 17px; }
+    .benefit-text h4 { font-size: 0.95rem; }
+    .benefit-text p { font-size: 0.82rem; }
   }
 </style>
 </head>
@@ -656,6 +668,9 @@
       item.classList.add('active');
       document.querySelectorAll('.benefit-slide')[idx].classList.add('active');
       document.getElementById('benefitCaption').innerHTML = benefitCaptions[idx];
+      if (window.innerWidth <= 768) {
+        document.querySelector('.benefit-img').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   });
 
