@@ -700,8 +700,11 @@
 </footer>
 
 <script>
-  // Always start at top on load/refresh (fixes mobile scroll restore issue)
+  // Always start at top on load/refresh (fixes mobile scroll restore + hash anchor scroll)
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
   window.scrollTo(0, 0);
 
   // Dynamic copyright year
