@@ -664,11 +664,14 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 <span>Gas2Fleets</span>. All rights reserved. Serving Rockland & Orange County, NY.</p>
+    <p class="footer-copy">© <span id="copyright-year"></span> <span>Gas2Fleets</span>. All rights reserved. Serving Rockland & Orange County, NY.</p>
   </div>
 </footer>
 
 <script>
+  // Dynamic copyright year
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
   // Enable :active states on iOS WebKit (Safari, Google app)
   document.addEventListener('touchstart', function(){}, {passive: true});
 
